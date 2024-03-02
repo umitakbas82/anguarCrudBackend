@@ -1,0 +1,6 @@
+@anguarCrudBackend_HostAddress = http://localhost:5174
+
+GET {{anguarCrudBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
