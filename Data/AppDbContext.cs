@@ -2,8 +2,13 @@
 
 namespace anguarCrudBackend.Data
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
-    {
-        public DbSet<Employee> Employees { get; set; }
+    public class AppDbContext:DbContext
+     { 
+        public AppDbContext(DbContextOptions<AppDbContext>options):base(options) { }
+
+        public DbSet<Employee> Employees { get; set; }  
+
+
+
     }
 }
