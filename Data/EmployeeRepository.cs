@@ -43,6 +43,18 @@ namespace anguarCrudBackend.Data
             
         }
 
+        public async Task DeleteEmployeeAsync(int id)
+        {
+            var employee = await _appDbContext.Employees.FindAsync(id);
+            if (employee == null)
+            {
+                throw new Exception("Employee Not Found");
+               
+            }
+            _appDbContext.Employees.Remove(employee);
+            _appDbContext.SaveChangesAsync();
+        }
+
        
     }
     

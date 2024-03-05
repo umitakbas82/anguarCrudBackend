@@ -44,5 +44,13 @@ namespace anguarCrudBackend.Controllers
             await _employeeRepository.UpdateEmployeeAsync(id, model);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteEmployee([FromRoute] int id)
+        {
+            await _employeeRepository.DeleteEmployeeAsync(id);
+            return Ok();
+        }
+
     }
 }
