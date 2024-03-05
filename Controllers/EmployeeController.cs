@@ -19,15 +19,22 @@ namespace anguarCrudBackend.Controllers
         [HttpPost]
         public async Task<ActionResult> AddEmployee([FromBody] Employee model)
         {
-            await _employeeRepository.AddEmployee(model);
+            await _employeeRepository.AddEmployeeAssync(model);
             return Ok();
         }
 
         [HttpGet]
         public async Task<ActionResult> GetEmployeeList()
         {
-           var employeeList =await _employeeRepository.GetAllEmployee();
+           var employeeList =await _employeeRepository.GetEmployeesAsync();
             return Ok(employeeList);    
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetEmployeeById([FromRoute] int id)
+        {
+            var employee= await _employeeRepository.GetEmployeeById(id);
+            return Ok(employee);
         }
        
     }
