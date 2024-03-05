@@ -11,7 +11,7 @@ namespace anguarCrudBackend.Data
             _appDbContext = appDbContext;
         }
 
-        public async Task AddEmployeeAssync(Employee employee)
+        public async Task AddEmployeeAsync(Employee employee)
         {
             await _appDbContext.Set<Employee>().AddAsync(employee);
             await _appDbContext.SaveChangesAsync();
@@ -27,6 +27,23 @@ namespace anguarCrudBackend.Data
             return await _appDbContext.Employees.FindAsync(id);
         }
 
+        public async Task UpdateEmployeeAsync(int id, Employee model)
+        {
+            var employee =await _appDbContext.Employees.FindAsync(id);
+            if(employee == null)
+            {
+                throw new Exception("Employee Not Found");
+            }
+            employee.Name= model.Name;
+            employee.Email= model.Email;
+            employee.Phone= model.Phone;
+            employee.Salary= model.Salary;
+
+            await _appDbContext.SaveChangesAsync();
+            
+        }
+
+       
     }
     
 }
